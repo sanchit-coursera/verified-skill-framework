@@ -223,21 +223,22 @@ const ConceptView = () => {
       ) : (
         <div className="bg-surface p-8 md:p-10 rounded-2xl shadow-card border border-stone-light max-w-2xl mx-auto opacity-0 animate-slide-up fill-mode-forwards">
           <div className="text-center mb-10">
-            <h3 className="font-display text-2xl font-semibold text-ink">The 3-Level Hierarchy</h3>
+            <h3 className="font-display text-2xl font-semibold text-ink">The 4-Level Hierarchy</h3>
             <p className="text-ink-muted mt-2">How Verified Skills fit into a Job Role.</p>
           </div>
           <div className="space-y-0">
             {[
               { level: 1, label: 'Occupation Group (Role)', value: 'Data Analyst', bg: 'bg-ink', text: 'text-cream', icon: Briefcase },
               { level: 2, label: 'Verified Skill', value: 'Prepare analysis-ready datasets', sub: 'A portable, transferable unit of work.', highlight: true, icon: CheckCircle },
-              { level: 3, label: 'Expression', values: ['Handle missing values', 'Remove duplicate records'], bg: 'bg-cream-dark', text: 'text-ink', grid: true }
+              { level: 3, label: 'Job Task', value: 'Details TBD', sub: 'Placeholder — to be defined.', bg: 'bg-stone-light', text: 'text-ink-muted', icon: Briefcase },
+              { level: 4, label: 'Expression', values: ['Handle missing values', 'Remove duplicate records'], bg: 'bg-cream-dark', text: 'text-ink', grid: true }
             ].map((item, i) => (
               <div key={item.level} className="relative">
                 {item.grid ? (
                   <div className="grid grid-cols-2 gap-2 pt-4">
                     {item.values.map((v, j) => (
                       <div key={j} className={`${item.bg} ${item.text} border border-stone p-4 rounded-xl text-center`}>
-                        <div className="text-[10px] uppercase font-bold text-ink-muted tracking-wider mb-1">Level 3: Expression</div>
+                        <div className="text-[10px] uppercase font-bold text-ink-muted tracking-wider mb-1">Level 4: Expression</div>
                         <div className="text-sm font-medium">{v}</div>
                       </div>
                     ))}
@@ -255,7 +256,7 @@ const ConceptView = () => {
                       </div>
                       {item.sub && <p className="text-xs opacity-90 mt-1 italic">{item.sub}</p>}
                     </div>
-                    {i < 2 && <div className="h-4 w-px bg-stone mx-auto" />}
+                    {i < 3 && <div className="h-4 w-px bg-stone mx-auto" />}
                   </>
                 )}
               </div>
@@ -333,7 +334,8 @@ const TransferSimulator = () => {
           {[
             { label: 'Level 1: Occupation (Variable)', value: `${roleAData.title} → ${roleBData.title}`, icon: RefreshCw, bg: 'bg-stone-light', color: 'text-ink' },
             { label: 'Level 2: Verified Skill (Stable)', value: skillData.name, icon: Lock, bg: 'bg-amber-soft', color: 'text-amber-brand' },
-            { label: 'Level 3: Expressions (Adapts)', value: `${skillData.core_expressions.length} Core + ${roleBData.expressions.length} New`, icon: GitMerge, bg: 'bg-teal-soft/50', color: 'text-teal' }
+            { label: 'Level 3: Job Task (TBD)', value: 'Details TBD', icon: Briefcase, bg: 'bg-stone-light', color: 'text-ink-muted' },
+            { label: 'Level 4: Expressions (Adapts)', value: `${skillData.core_expressions.length} Core + ${roleBData.expressions.length} New`, icon: GitMerge, bg: 'bg-teal-soft/50', color: 'text-teal' }
           ].map((item, i) => {
             const Icon = item.icon;
             return (
@@ -392,8 +394,9 @@ const TransferSimulator = () => {
           <div className="text-center px-2">
             <h4 className="font-display font-semibold text-ink">Transfer</h4>
             <div className="mt-4 space-y-2">
-              <span className="block text-sm bg-teal-soft text-teal px-3 py-2 rounded-lg font-medium border border-teal/20">Level 2 stays intact</span>
-              <span className="block text-sm bg-amber-soft text-amber-brand px-3 py-2 rounded-lg font-medium border border-amber-border">Level 3 adapts</span>
+              <span className="block text-sm bg-amber-soft text-amber-brand px-3 py-2 rounded-lg font-medium border border-amber-border">Level 2 stays intact</span>
+              <span className="block text-sm bg-stone-light text-ink-muted px-3 py-2 rounded-lg font-medium border border-stone">Level 3: Job Task (TBD)</span>
+              <span className="block text-sm bg-teal-soft text-teal px-3 py-2 rounded-lg font-medium border border-teal/20">Level 4 adapts</span>
             </div>
           </div>
         </div>

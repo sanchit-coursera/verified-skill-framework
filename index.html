@@ -53,6 +53,8 @@
         --radius: 0.75rem;
       }
       body { font-family: var(--font-body); background: var(--color-bg); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
+      /* Ensure root app div uses design tokens (matches Tailwind: bg-cream → #faf8f5, text-ink → #1c1917) */
+      #root { background-color: var(--color-bg); color: var(--color-ink); }
       .font-display { font-family: var(--font-display); }
       .stagger-1 { animation-delay: 0.05s; }
       .stagger-2 { animation-delay: 0.1s; }
